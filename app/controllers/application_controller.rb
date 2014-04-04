@@ -9,6 +9,9 @@ class ApplicationController < ActionController::Base
   helper_method :head_title
   after_filter :save_lp
 
+  helper_method :build_sl, :build_sl_link
+
+
   def handle_redirect
     redir = (session[:lp].nil?) ? root_path : session[:lp]
     session[:lp] = nil
@@ -27,6 +30,15 @@ class ApplicationController < ActionController::Base
     end
 
     title
+  end
+
+  def build_sl(id)
+    return "#{request.protocol}#{request.host_with_port}/#{id}"
+  end
+
+  def build_sl_link(id)
+    link = build_sl(id)
+    return view_context.link_to link, link, target: '_blank'
   end
 
   private

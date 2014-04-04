@@ -11,12 +11,11 @@ class SessionController < ApplicationController
     else
       @user = User.find_by_auth(auth_hash()) || User.create_with_auth(auth_hash())
       session[:user_id] = @user.id
-      # if(@user.is_fresh?)
-      #   return redirect_to '/account_setup'
-      # end
+      
+      save_session_links(@user.id)
     end
     
-    handle_redirect
+    redirect_to :root
   end
 
   def destroy
@@ -28,6 +27,10 @@ class SessionController < ApplicationController
   
   def auth_hash
     request.env['omniauth.auth']
+  end
+
+  def save_session_links(user_id)
+    ShortLink.save_session_links_to_user(request.session_options[:id], user_id)
   end
 
 end

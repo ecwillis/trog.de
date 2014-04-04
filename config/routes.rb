@@ -5,8 +5,13 @@ TrogDe::Application.routes.draw do
   # You can have the root of your site routed with "root"
   root 'main#index'
 
+  get '/shorten', to: 'main#shorten', as: :shorten
+
+  get '/debug', to: 'main#debug'
+
   # auth - CB
   get '/auth/:provider/callback', to: 'session#callback' ## Omniauth
   get 'logout', to: 'session#destroy', as: :logout
   
+  get ':link_id', to: 'main#jump'
 end

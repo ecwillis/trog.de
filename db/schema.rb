@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140404073352) do
+ActiveRecord::Schema.define(version: 20140404080622) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -22,6 +22,17 @@ ActiveRecord::Schema.define(version: 20140404073352) do
     t.string   "secret"
     t.string   "token"
     t.string   "uuid"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "short_links", force: true do |t|
+    t.string   "link"
+    t.string   "short_id"
+    t.string   "link_hash"
+    t.integer  "clicks"
+    t.integer  "user_id"
+    t.string   "session_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
