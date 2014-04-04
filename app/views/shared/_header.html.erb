@@ -1,0 +1,19 @@
+
+<div class="row">
+  <div class="col-xs-12 col-sm-6 col-md-4">
+    <h1 class="main-logo"><a href="/">trog.de</a></h1>
+  </div>
+  <div class="col-xs-12 col-sm-6 col-md-8 text-right">
+    <%- if is_authd? %>
+    <p><strong>Welcome!</strong> <%=current_user.name %> | <a href="/logout">Logout</a>
+    <%- else %>
+    <p>
+      <strong>Login with:</strong>  
+      <a href="/auth/facebook" class="btn btn-sm btn-fb">facebook</a>
+      <a href="/auth/twitter" class="btn btn-sm btn-twitter">twitter</a>
+      <a href="/auth/gplus" class="btn btn-sm btn-gp">google+</a>
+    </p>
+
+    <% end %>
+  </div>
+</div>

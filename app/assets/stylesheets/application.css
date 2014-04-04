@@ -11,3 +11,7 @@
  *= require_self
  *= require_tree .
  */
+
+.btn-fb {background:#3b5998;color:#FFF;border-color:#3b5998;}
+.btn-twitter {background:#4099FF; color:#FFF;border-color:#4099FF;}
+.btn-gp {background:#d34836;color:#FFF;border-color:#d34836;}
